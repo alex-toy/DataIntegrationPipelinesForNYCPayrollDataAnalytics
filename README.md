@@ -36,13 +36,17 @@ For all steps bellow, you can run the script files individually or run *commands
 
 1. Create the data lake and upload data. For all sub-steps bellow, run *commands\storage_gen2.ps1*
 
-- Create an **Azure Data Lake Storage Gen2** (storage account) and associated storage container resource named *nycpayroll-sa-alexei*. 
+- Create an **Azure Data Lake Storage Gen2** (storage account) and associated storage container resource named *nycpayrollcontainer*. 
+
+<img src="/pictures/nycpayrollcontainer.png" title="nycpayrollcontainer container"  width="600">
 
 - Create the three following directories in this storage container :
 
     - *dirpayrollfiles*
     - *dirhistoryfiles*
     - *dirstaging*
+
+<img src="/pictures/directories_to_container.png" title="directories uploaded to container"  width="600">
 
 - Upload these files from the */data* folder to the *dirpayrollfiles* folder :
 
@@ -51,9 +55,11 @@ For all steps bellow, you can run the script files individually or run *commands
     - *TitleMaster.csv*
     - *nycpayroll_2021.csv*
 
+<img src="/pictures/files_to_dirpayrollfiles.png" title="files uploaded to dirpayrollfiles"  width="600">
+
 - Upload the file *nycpayroll_2020.csv* from the project data to the *dirhistoryfiles* folder.
 
-<img src="/pictures/storage_gen2.jpeg" title="files uploaded in storage gen 2"  width="400">
+<img src="/pictures/files_to_dirhistoryfiles.png" title="files uploaded to dirhistoryfiles"  width="600">
 
 
 2. Create an **Azure Data Factory** Resource. For this, run *commands\datafactory.ps1*
