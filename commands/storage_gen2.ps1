@@ -1,5 +1,8 @@
 $StorageAccount = "nycpayrollsaalexei"
 $StorageContainer = "nycpayrollcontainer"
+$DirectoryName = "dirpayrollfiles"
+
+# CAUTION : in order to make the storage account a gen2, you need to set *hierarchical-namespace* as true.
 
 az storage account create `
     --name $StorageAccount `
@@ -17,7 +20,7 @@ az storage container create `
 
 
 az storage fs directory create `
-    --name dirpayrollfiles `
+    --name $DirectoryName `
     --file-system $StorageContainer `
     --account-name $StorageAccount `
     --auth-mode key
@@ -25,25 +28,25 @@ az storage fs directory create `
 az storage fs directory upload `
     --account-name $StorageAccount `
     --file-system $StorageContainer `
-    --destination-path /dirpayrollfiles `
+    --destination-path /$DirectoryName `
     --source "data/EmpMaster.csv" 
 
 az storage fs directory upload `
     --account-name $StorageAccount `
     --file-system $StorageContainer `
-    --destination-path /dirpayrollfiles `
+    --destination-path /$DirectoryName `
     --source "data\AgencyMaster.csv" 
 
 az storage fs directory upload `
     --account-name $StorageAccount `
     --file-system $StorageContainer `
-    --destination-path /dirpayrollfiles `
+    --destination-path /$DirectoryName `
     --source "data\TitleMaster.csv" 
 
 az storage fs directory upload `
     --account-name $StorageAccount `
     --file-system $StorageContainer `
-    --destination-path /dirpayrollfiles `
+    --destination-path /$DirectoryName `
     --source "data\nycpayroll_2021.csv"
 
 

@@ -95,7 +95,7 @@ For all steps bellow, you can run the script files individually or run *commands
 Dont forget to use the proper sql pool, not built-in :
 
 <img src="/pictures/sql_dedicated_pool_tables.png" title="sql dedicated pool tables"  width="600">
-<img src="/pictures/sql_dedicated_pool_tables2.png" title="sql dedicated pool tables"  width="600">
+<img src="/pictures/sql_dedicated_pool_tables2.png" title="sql dedicated pool tables"  width="300">
 
 
 
@@ -110,17 +110,17 @@ Dont forget to use the proper sql pool, not built-in :
 
 - Test the connection
 
-<img src="/pictures/linked_service_data_lake.jpeg" title="linked service data lake"  width="600">
+<img src="/pictures/linked_service_data_lake.png" title="linked service data lake"  width="300">
 
 
 2. Create a **Linked Service** to SQL Database that has the current (2021) data. If you get a connection error, remember to add the IP address to the firewall settings in SQL DB in the Azure Portal.
 
-<img src="/pictures/linked_service_sql_db.jpeg" title="linked service sql database"  width="600">
+<img src="/pictures/linked_service_sql_db.png" title="linked service sql database"  width="300">
 
 
 3. Create a **Linked Service** for **Synapse Analytics** : Create the linked service to the SQL pool.
 
-<img src="/pictures/linked_service_sql_synapse" title="linked service synapse"  width="600">
+<img src="/pictures/linked_service_sql_synapse.png" title="linked service synapse"  width="300">
 
 
 
@@ -134,16 +134,16 @@ Dont forget to use the proper sql pool, not built-in :
 
 2. Repeat the same process to create datasets for the rest of the data files in the Data Lake
 
-- EmpMaster.csv
-- TitleMaster.csv
-- AgencyMaster.csv
-- Remember to publish all the datasets
+- *EmpMaster.csv*
+- *TitleMaster.csv*
+- *AgencyMaster.csv*
+- Publish all the datasets
 
 3. Create the dataset for transaction data table that should contain current (2021) data in SQL DB
 
 4. Create the datasets for destination (target) tables in Synapse Analytics
 
-- dataset for NYC_Payroll_EMP_MD
+- dataset for *NYC_Payroll_EMP_MD*
 - for *NYC_Payroll_TITLE_MD*
 - for *NYC_Payroll_AGENCY_MD*
 - for *NYC_Payroll_Data*

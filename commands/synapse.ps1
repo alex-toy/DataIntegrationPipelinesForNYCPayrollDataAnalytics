@@ -1,4 +1,4 @@
-$Global:SynapseWorSpace = "nycpayrollsynapsews"
+$Global:SynapseWorkSpace = "nycpayrollsynapsews"
 $Global:StorageAccountGen2 = "nycpayrollgen2"
 $Global:FileSystemGen2 = "nycpayrollfs"
 
@@ -8,7 +8,7 @@ az storage fs create `
     --auth-mode login
 
 az synapse workspace create `
-    --name $SynapseWorSpace `
+    --name $SynapseWorkSpace `
     --resource-group $RGName `
     --storage-account $StorageAccountGen2 `
     --file-system $FileSystemGen2 `
@@ -21,7 +21,7 @@ az synapse sql pool create `
     --name nycsqlpool `
     --resource-group $RGName `
     --performance-level "DW100c" `
-    --workspace-name $SynapseWorSpace `
+    --workspace-name $SynapseWorkSpace `
     # [--collation]
     # [--no-wait]
     # [--storage-type {GRS, LRS}]
