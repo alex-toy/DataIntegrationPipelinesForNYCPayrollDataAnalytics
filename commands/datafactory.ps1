@@ -1,7 +1,9 @@
 #######################################################################
 "datafactory :"
 
+$Global:Factory = "nycpayrollfactory"
+
 az datafactory create `
     --location $RGLocation `
-    --name "nycpayroll" `
+    --name $Factory `
     --resource-group $RGName

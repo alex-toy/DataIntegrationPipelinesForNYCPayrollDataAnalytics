@@ -1,4 +1,4 @@
-$StorageAccount = "nycpayrollsaalexei2"
+$StorageAccount = "nycpayrollsaalexei"
 $StorageContainer = "nycpayrollcontainer"
 
 az storage account create `

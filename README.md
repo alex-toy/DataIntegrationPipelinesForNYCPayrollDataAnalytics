@@ -64,6 +64,8 @@ For all steps bellow, you can run the script files individually or run *commands
 
 2. Create an **Azure Data Factory** Resource. For this, run *commands\datafactory.ps1*
 
+<img src="/pictures/factory.png" title="factory"  width="600">
+
 
 3. Create a **SQL Database** to store the current year of the payroll data. For the two sub-steps bellow, run *commands\sql_db.ps1* to create resource automatically.
 
@@ -78,13 +80,22 @@ For all steps bellow, you can run the script files individually or run *commands
 
 4. Create A **Synapse Analytics workspace**. For all sub-steps bellow, run *commands\synapse.ps1*
 
+<img src="/pictures/synapse.png" title="synapse"  width="600">
+
 - Create a new **Azure Data Lake Gen2** and file system for **Synapse Analytics** when you are creating the Synapse Analytics workspace in the Azure portal.
 
 - Create a **SQL dedicated pool** in the **Synapse Analytics** workspace. Select DW100c as performance level. Keep defaults for other settings.
 
-- In the **SQL dedicated pool**, Create master data tables and payroll transaction tables using the SQL scripts from *dedicated_pool_script.sql*.
+<img src="/pictures/sql_dedicated_pool.png" title="sql dedicated pool"  width="600">
 
-<img src="/pictures/sql_dedicated_pool_tables.jpeg" title="sql dedicated pool tables"  width="600">
+- In the **SQL dedicated pool**, Create master data tables and payroll transaction tables using the SQL scripts from *dedicated_pool_script.sql*. You may need to update the firewall rules :
+
+<img src="/pictures/firewall_rules.png" title="firewall_rules"  width="600">
+
+Dont forget to use the proper sql pool, not built-in :
+
+<img src="/pictures/sql_dedicated_pool_tables.png" title="sql dedicated pool tables"  width="600">
+<img src="/pictures/sql_dedicated_pool_tables2.png" title="sql dedicated pool tables"  width="600">
 
 
 

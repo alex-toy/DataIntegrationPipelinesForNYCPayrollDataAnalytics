@@ -4,4 +4,6 @@
 
 ."commands\sql_db.ps1"
 
+."commands\factory.ps1"
+
 ."commands\synapse.ps1"
