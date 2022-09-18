@@ -200,10 +200,22 @@ Dont forget to use the proper sql pool, not built-in :
 
 - Create a new pipeline
 - Select the data flow to load the 2021 file into SQLDB
+
+<img src="/pictures/pipeline_load_2021_into_sql.png" title="pipeline load the 2021 file into SQLDB"  width="600">
+
 - Trigger the pipeline
+
+<img src="/pictures/pipeline_trigger.png" title="pipeline trigger"  width="600">
+
 - Monitor the pipeline
 - Take a screenshot of the Azure Data Factory screen pipeline run after it has finished.
+
+<img src="/pictures/pipeline_finished.png" title="pipeline finished"  width="600">
+
 - Make sure the data is successfully loaded into the SQL DB table
+
+<img src="/pictures/successfully_loaded_into_sql.png" title="successfully loaded into SQL"  width="600">
+
 
 3. Create data flows to load the data from the data lake files into the Synapse Analytics data tables
 
