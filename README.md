@@ -176,7 +176,7 @@ Dont forget to use the proper sql pool, not built-in :
 
 <img src="/pictures/dataset_NYC_Payroll_Data.png" title="datasets NYC_Payroll_Data"  width="600">
 
-
+- Publish all the datasets
 
 
 ## Step 4: Create Data Flows
@@ -185,7 +185,15 @@ Dont forget to use the proper sql pool, not built-in :
 
 - Create a new data flow
 - Select the dataset for the 2021 payroll file as the source
+
+<img src="/pictures/dataflow_2021_payroll_data.png" title="dataflow 2021 payroll data"  width="600">
+<img src="/pictures/dataflow_2021_payroll_data_preview.png" title="dataflow 2021 payroll data preview"  width="600">
+
 - Select the sink dataset as the payroll table on SQL DB
+
+<img src="/pictures/dataflow_payroll_table_sql_db.png" title="dataflow payroll table on SQL DB"  width="600">
+<img src="/pictures/dataflow_payroll_table_sql_db_preview.png" title="dataflow payroll table on SQL DB preview"  width="600">
+
 - Make sure to reassign any missing source to target mappings
 
 2. Create Pipeline to load 2021 Payroll data into transaction table in the SQL DB
