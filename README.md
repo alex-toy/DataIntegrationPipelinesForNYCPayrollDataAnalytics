@@ -219,16 +219,31 @@ Dont forget to use the proper sql pool, not built-in :
 
 3. Create data flows to load the data from the data lake files into the Synapse Analytics data tables
 
-- Create the data flows for loading Employee, Title, and Agency files into corresponding SQL pool tables on Synapse Analytics
-- For each Employee, Title, and Agency file data flow, sink the data into each target Synaspe table
+- Create the data flows for loading *Employee*, *Title*, and *Agency* files into corresponding SQL pool tables on **Synapse Analytics**
+
+- For each *Employee*, *Title*, and *Agency* file data flow, sink the data into each target Synaspe table
+
+<img src="/pictures/dataflow_employee.png" title="dataflow employee"  width="600">
+<img src="/pictures/dataflow_title.png" title="dataflow title"  width="600">
+<img src="/pictures/dataflow_agency.png" title="dataflow agency"  width="600">
 
 4. Create a data flow to load 2021 data from SQL DB to Synapse Analytics
+
+<img src="/pictures/dataflow_2021_from_sql_to_synapse.png" title="dataflow load 2021 data from SQL DB to Synapse Analytics"  width="600">
+<img src="/pictures/dataflow_2021_from_sql_to_synapse2.png" title="dataflow load 2021 data from SQL DB to Synapse Analytics"  width="600">
 
 5. Create pipelines for Employee, Title, Agency, and year 2021 Payroll transaction data to Synapse Analytics containing the data flows.
 
 - Select the dirstaging folder in the data lake storage for staging
 - Optionally you can also create one master pipeline to invoke all the Data Flows
+
+<img src="/pictures/pipeline_employee_Title_Agency1.png" title="pipeline for Employee, Title, Agency"  width="600">
+<img src="/pictures/pipeline_employee_Title_Agency2.png" title="pipeline for Employee, Title, Agency"  width="600">
+<img src="/pictures/pipeline_employee_Title_Agency3.png" title="pipeline for Employee, Title, Agency"  width="600">
+
 Validate and publish the pipelines
+
+<img src="/pictures/pipeline_employee_Title_Agency_run.png" title="pipeline for Employee, Title, Agency run"  width="600">
 
 6. Trigger and monitor the Pipelines
 
