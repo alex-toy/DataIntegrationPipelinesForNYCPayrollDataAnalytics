@@ -7,6 +7,7 @@ az storage fs create `
     --account-name $StorageAccountGen2 `
     --auth-mode login
 
+
 az synapse workspace create `
     --name $SynapseWorkSpace `
     --resource-group $RGName `

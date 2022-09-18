@@ -130,23 +130,52 @@ Dont forget to use the proper sql pool, not built-in :
 
 - Select DelimitedText
 - Set the path to the nycpayroll_2021.csv in the Data Lake
+
+<img src="/pictures/dataset_2021_payroll.png" title="datasets for the 2021 Payroll file"  width="600">
+
 - Preview the data to make sure it is correctly parsed
+
+<img src="/pictures/dataset_2021_payroll_preview.png" title="datasets for the 2021 Payroll file preview"  width="600">
+
 
 2. Repeat the same process to create datasets for the rest of the data files in the Data Lake
 
 - *EmpMaster.csv*
+
+<img src="/pictures/dataset_EmpMaster.png" title="datasets EmpMaster"  width="600">
+
 - *TitleMaster.csv*
+
+<img src="/pictures/dataset_TitleMaster.png" title="datasets TitleMaster"  width="600">
+
 - *AgencyMaster.csv*
+
+<img src="/pictures/dataset_AgencyMaster.png" title="datasets AgencyMaster"  width="600">
+
 - Publish all the datasets
 
 3. Create the dataset for transaction data table that should contain current (2021) data in SQL DB
 
+<img src="/pictures/dataset_current_2021_data.png" title="datasets current 2021 data"  width="600">
+
 4. Create the datasets for destination (target) tables in Synapse Analytics
 
 - dataset for *NYC_Payroll_EMP_MD*
+
+<img src="/pictures/dataset_NYC_Payroll_EMP_MD.png" title="datasets NYC_Payroll_EMP_MD"  width="600">
+
 - for *NYC_Payroll_TITLE_MD*
+
+<img src="/pictures/dataset_NYC_Payroll_TITLE_MD.png" title="datasets NYC_Payroll_TITLE_MD"  width="600">
+
 - for *NYC_Payroll_AGENCY_MD*
+
+<img src="/pictures/dataset_NYC_Payroll_AGENCY_MD.png" title="datasets NYC_Payroll_AGENCY_MD"  width="600">
+
 - for *NYC_Payroll_Data*
+
+<img src="/pictures/dataset_NYC_Payroll_Data.png" title="datasets NYC_Payroll_Data"  width="600">
+
 
 
 
