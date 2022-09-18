@@ -1,3 +1,7 @@
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
+
 $StorageAccount = "nycpayrollsaalexei"
 $StorageContainer = "nycpayrollcontainer"
 $DirectoryName = "dirpayrollfiles"

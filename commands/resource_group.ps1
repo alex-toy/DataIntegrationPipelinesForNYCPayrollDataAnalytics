@@ -1,3 +1,6 @@
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
 
 $Global:RGLocation = "francecentral"
 $Global:RGName = "nycpayrollrg"

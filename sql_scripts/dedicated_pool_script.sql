@@ -1,4 +1,4 @@
--- Create Emplyee Master Data table:
+-- Create Employee Master Data table:
 
 CREATE TABLE [dbo].[NYC_Payroll_EMP_MD](
     [EmployeeID] [varchar](10) NULL,

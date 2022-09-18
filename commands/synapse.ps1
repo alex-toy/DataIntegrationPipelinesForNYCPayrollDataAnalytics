@@ -1,3 +1,7 @@
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
+
 $Global:SynapseWorkSpace = "nycpayrollsynapsews"
 $Global:StorageAccountGen2 = "nycpayrollgen2"
 $Global:FileSystemGen2 = "nycpayrollfs"

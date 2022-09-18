@@ -1,3 +1,7 @@
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
+
 az synapse dataset create --file
                           --name
                           --workspace-name

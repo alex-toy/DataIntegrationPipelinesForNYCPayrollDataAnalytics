@@ -1,5 +1,6 @@
-################################################################
-# SQL database :
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
 
 $Global:SQLAdminUser = "sqladminuser"
 $Global:SQLAdminPassword = "p@ssword1234"

@@ -1,3 +1,6 @@
+"###############################################################"
+"Now running : " + $MyInvocation.MyCommand.Path
+"###############################################################"
 
 az datafactory linked-service create `
     --factory-name $Factory `

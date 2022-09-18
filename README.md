@@ -88,13 +88,16 @@ For all steps bellow, you can run the script files individually or run *commands
 
 <img src="/pictures/sql_dedicated_pool.png" title="sql dedicated pool"  width="600">
 
-- In the **SQL dedicated pool**, Create master data tables and payroll transaction tables using the SQL scripts from *dedicated_pool_script.sql*. You may need to update the firewall rules :
+- Go into the **Networking** section of your **Synapse Workspace** and update the firewall rules :
 
 <img src="/pictures/firewall_rules.png" title="firewall_rules"  width="600">
 
-Dont forget to use the proper sql pool, not built-in :
+- In the **SQL dedicated pool**, Create master data tables and payroll transaction tables using the SQL scripts from *dedicated_pool_script.sql*. Dont forget to use the proper sql pool (*nycsqlpool*), not built-in :
 
 <img src="/pictures/sql_dedicated_pool_tables.png" title="sql dedicated pool tables"  width="600">
+
+You should see the tables properly created in your Data / Workspace :
+
 <img src="/pictures/sql_dedicated_pool_tables2.png" title="sql dedicated pool tables"  width="300">
 
 
@@ -102,34 +105,39 @@ Dont forget to use the proper sql pool, not built-in :
 ## Step 2: Create Linked Services
 
 
-1. Create a **Linked Service** for **Azure Data Lake**
+1. In **Azure Data Factory**, create a **Linked Service** for **Azure Data Lake**
 
-- In **Azure Data Factory**, create a linked service to the data lake that contains the data files
+- create a linked service to the data lake that contains the data files
 
-- From the data stores, select Azure Data Lake Gen 2
-
-- Test the connection
+- From the data stores, select **Azure Data Lake Gen 2**. Name : *DataLakeFiles*
 
 <img src="/pictures/linked_service_data_lake.png" title="linked service data lake"  width="300">
 
 
-2. Create a **Linked Service** to SQL Database that has the current (2021) data. If you get a connection error, remember to add the IP address to the firewall settings in SQL DB in the Azure Portal.
+2. In **Azure Data Factory**, create a **Linked Service** to SQL Database that has the current (2021) data. If you get a connection error, remember to add the IP address to the firewall settings in SQL DB in the Azure Portal. Name : *SqlDbCurrentData*
 
 <img src="/pictures/linked_service_sql_db.png" title="linked service sql database"  width="300">
 
 
-3. Create a **Linked Service** for **Synapse Analytics** : Create the linked service to the SQL pool.
+3. In **Azure Data Factory**, create a **Linked Service** : Create the linked service to the SQL pool. Name :  *SynapseSqlPool*
 
 <img src="/pictures/linked_service_sql_synapse.png" title="linked service synapse"  width="300">
+
+In the end, you should have this :
+
+<img src="/pictures/linked_service1.png" title="linked service final"  width="500">
+<img src="/pictures/linked_service2.png" title="linked service final"  width="500">
+
+
 
 
 
 ## Step 3: Create Datasets in Azure Data Factory
 
-1. Create the datasets for the 2021 Payroll file on Azure Data Lake Gen2
+1. Create the datasets for the 2021 Payroll file on **Azure Data Lake Gen2**. Call it *dataset_2021_payroll*
 
 - Select DelimitedText
-- Set the path to the nycpayroll_2021.csv in the Data Lake
+- Set the path to the *nycpayroll_2021.csv* in the Data Lake
 
 <img src="/pictures/dataset_2021_payroll.png" title="datasets for the 2021 Payroll file"  width="600">
 
@@ -140,39 +148,39 @@ Dont forget to use the proper sql pool, not built-in :
 
 2. Repeat the same process to create datasets for the rest of the data files in the Data Lake
 
-- *EmpMaster.csv*
+- *EmpMaster.csv*. Name : *dataset_EmpMaster*
 
 <img src="/pictures/dataset_EmpMaster.png" title="datasets EmpMaster"  width="600">
 
-- *TitleMaster.csv*
+- *TitleMaster.csv*. Name : *dataset_TitleMaster*
 
 <img src="/pictures/dataset_TitleMaster.png" title="datasets TitleMaster"  width="600">
 
-- *AgencyMaster.csv*
+- *AgencyMaster.csv*. Name : *dataset_AgencyMaster*
 
 <img src="/pictures/dataset_AgencyMaster.png" title="datasets AgencyMaster"  width="600">
 
 - Publish all the datasets
 
-3. Create the dataset for transaction data table that should contain current (2021) data in SQL DB
+3. Create the dataset for transaction data table that should contain current (2021) data in SQL DB. Name : *dataset_nycpayroll_db*
 
 <img src="/pictures/dataset_current_2021_data.png" title="datasets current 2021 data"  width="600">
 
-4. Create the datasets for destination (target) tables in Synapse Analytics
+4. Create the datasets for destination (target) tables in **Synapse Analytics**
 
-- dataset for *NYC_Payroll_EMP_MD*
+- dataset for *NYC_Payroll_EMP_MD*. Name : *dataset_NYC_Payroll_EMP_MD*
 
 <img src="/pictures/dataset_NYC_Payroll_EMP_MD.png" title="datasets NYC_Payroll_EMP_MD"  width="600">
 
-- for *NYC_Payroll_TITLE_MD*
+- for *NYC_Payroll_TITLE_MD*. Name : *dataset_NYC_Payroll_TITLE_MD*
 
 <img src="/pictures/dataset_NYC_Payroll_TITLE_MD.png" title="datasets NYC_Payroll_TITLE_MD"  width="600">
 
-- for *NYC_Payroll_AGENCY_MD*
+- for *NYC_Payroll_AGENCY_MD*. Name : *dataset_NYC_Payroll_AGENCY_MD*
 
 <img src="/pictures/dataset_NYC_Payroll_AGENCY_MD.png" title="datasets NYC_Payroll_AGENCY_MD"  width="600">
 
-- for *NYC_Payroll_Data*
+- for *NYC_Payroll_Data*. Name : *dataset_NYC_Payroll_Data*
 
 <img src="/pictures/dataset_NYC_Payroll_Data.png" title="datasets NYC_Payroll_Data"  width="600">
 
@@ -181,7 +189,7 @@ Dont forget to use the proper sql pool, not built-in :
 
 ## Step 4: Create Data Flows
 
-1. In **Azure Data Factory**, create the data flow to load 2021 Payroll Data to SQL DB transaction table (in the future NYC will load all the transaction data into this table).
+1. In **Azure Data Factory**, create the data flow to load *2021 Payroll* Data to SQL DB transaction table (in the future NYC will load all the transaction data into this table).
 
 - Create a new data flow
 - Select the dataset for the 2021 payroll file as the source
@@ -189,14 +197,14 @@ Dont forget to use the proper sql pool, not built-in :
 <img src="/pictures/dataflow_2021_payroll_data.png" title="dataflow 2021 payroll data"  width="600">
 <img src="/pictures/dataflow_2021_payroll_data_preview.png" title="dataflow 2021 payroll data preview"  width="600">
 
-- Select the sink dataset as the payroll table on SQL DB
+- Select the sink dataset as the *payroll* table on SQL DB
 
 <img src="/pictures/dataflow_payroll_table_sql_db.png" title="dataflow payroll table on SQL DB"  width="600">
 <img src="/pictures/dataflow_payroll_table_sql_db_preview.png" title="dataflow payroll table on SQL DB preview"  width="600">
 
 - Make sure to reassign any missing source to target mappings
 
-2. Create Pipeline to load 2021 Payroll data into transaction table in the SQL DB
+2. Create Pipeline to load *2021 Payroll* data into transaction table in the SQL DB
 
 - Create a new pipeline
 - Select the data flow to load the 2021 file into SQLDB
@@ -208,7 +216,6 @@ Dont forget to use the proper sql pool, not built-in :
 <img src="/pictures/pipeline_trigger.png" title="pipeline trigger"  width="600">
 
 - Monitor the pipeline
-- Take a screenshot of the Azure Data Factory screen pipeline run after it has finished.
 
 <img src="/pictures/pipeline_finished.png" title="pipeline finished"  width="600">
 
@@ -232,23 +239,29 @@ Dont forget to use the proper sql pool, not built-in :
 <img src="/pictures/dataflow_2021_from_sql_to_synapse.png" title="dataflow load 2021 data from SQL DB to Synapse Analytics"  width="600">
 <img src="/pictures/dataflow_2021_from_sql_to_synapse2.png" title="dataflow load 2021 data from SQL DB to Synapse Analytics"  width="600">
 
-5. Create pipelines for Employee, Title, Agency, and year 2021 Payroll transaction data to Synapse Analytics containing the data flows.
+5. Create pipelines for *Employee*, *Title*, *Agency*, and *year 2021 Payroll transaction* data to **Synapse Analytics** containing the data flows. Optionally you can also create one master pipeline to invoke all the Data Flows.
 
 - Select the dirstaging folder in the data lake storage for staging
-- Optionally you can also create one master pipeline to invoke all the Data Flows
 
 <img src="/pictures/pipeline_employee_Title_Agency1.png" title="pipeline for Employee, Title, Agency"  width="600">
 <img src="/pictures/pipeline_employee_Title_Agency2.png" title="pipeline for Employee, Title, Agency"  width="600">
+
+- Validate and publish the pipelines
+
 <img src="/pictures/pipeline_employee_Title_Agency3.png" title="pipeline for Employee, Title, Agency"  width="600">
-
-Validate and publish the pipelines
-
-<img src="/pictures/pipeline_employee_Title_Agency_run.png" title="pipeline for Employee, Title, Agency run"  width="600">
 
 6. Trigger and monitor the Pipelines
 
-Take a screenshot of each pipeline run after it has finished, or one after your master pipeline run has finished.
-In total, you should have 6 pipelines or one master pipeline
+<img src="/pictures/pipeline_employee_Title_Agency_run.png" title="pipeline for Employee, Title, Agency run"  width="600">
+
+
+7. View the results
+
+<img src="/pictures/synapse_agency.png" title="Agency on synapse"  width="600">
+<img src="/pictures/synapse_payroll.png" title="payroll on synapse"  width="600">
+<img src="/pictures/synapse_emp.png" title="employee on synapse"  width="600">
+<img src="/pictures/synapse_title.png" title="title on synapse"  width="600">
+<img src="/pictures/storage_staging.png" title="storage staging"  width="600">
 
 
 
@@ -265,20 +278,26 @@ In this step, we'll extract the 2021 year data and historical data, merge, aggre
 3. Create new data flow and name it Dataflow Aggregate Data
 
 - Create a data flow level parameter for Fiscal Year
-- Add first Source for table_sqldb_nyc_payroll_data table
+- Add first Source for *table_sqldb_nyc_payroll_data* table
 - Add second Source for the Azure Data Lake history folder
 
 4. Create a new Union activity in the data flow and Union with history files
 
 5. Add a Filter activity after Union
 
-- In Expression Builder, enter toInteger(FiscalYear) >= $dataflow_param_fiscalyear
+- In Expression Builder, enter 
+```
+toInteger(FiscalYear) >= $dataflow_param_fiscalyear
+```
 
-6. Derive a new TotalPaid column
+6. Derive a new *TotalPaid* column
 
-- In Expression Builder, enter RegularGrossPaid + TotalOTPaid+TotalOtherPay
+- In Expression Builder, enter 
+```
+RegularGrossPaid + TotalOTPaid+TotalOtherPay
+```
 
-7. Add an Aggregate activity to the data flow next to the TotalPaid activity
+7. Add an Aggregate activity to the data flow next to the *TotalPaid* activity
 
 - Under Group By, Select AgencyName and Fiscal Year
 
@@ -289,8 +308,8 @@ In Settings, select Truncate Table
 
 9. Create a new Pipeline and add the Aggregate data flow
 
-- Create a new Global Parameter (This will be the Parameter at the global pipeline level that will be passed on to the data flow
-- In Parameters, select Pipeline Expression
+- Create a new Global Parameter (This will be the Parameter at the global pipeline level that will be passed on to the data flow)
+- In Parameters, select **Pipeline Expression**
 - Choose the parameter created at the Pipeline level
 
 10. Validate, Publish and Trigger the pipeline. Enter the desired value for the parameter.
